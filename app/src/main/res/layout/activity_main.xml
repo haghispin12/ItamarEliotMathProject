@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:text="math excercises"
+        android:textSize="@android:dimen/app_icon_size"
+
+        />
+    <TextView
+        android:id="@+id/successnum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/challenge"
+            android:background="@color/design_default_color_secondary_variant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="אתגר"
+            android:textSize="30dp"
+            android:layout_margin="5dp"
+
+        />
+
+        <Button
+            android:id="@+id/until20"
+            android:background="@color/design_default_color_secondary_variant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="כפל עד 20"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            />
+
+        <Button
+            android:id="@+id/question"
+            android:background="@color/design_default_color_secondary_variant"
+            android:backgroundTint="@color/material_dynamic_primary0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="לוח הכפל"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/firstnum"
+            android:layout_gravity="center"
+            android:background="#19CEBF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="30dp"
+            android:gravity="center"
+
+            />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#19CEBF"
+            android:gravity="center"
+            android:text="x"
+            android:textSize="60dp" />
+
+        <TextView
+            android:id="@+id/secundnum"
+            android:layout_gravity="center"
+            android:background="#19CEBF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="30dp"
+            android:gravity="center"
+            />
+        <EditText
+            android:id="@+id/answer"
+            android:backgroundTint="#28D1CF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="תשובה"
+            android:gravity="center"
+            android:textSize="30dp"
+            />
+        <Button
+            android:id="@+id/checkanswer"
+            android:background="#14D9BF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="בדיקה"
+            android:textSize="30dp"
+            />
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:backgroundTint="#DB0D3A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:textSize="20dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SHOW ALL USERS"
+        android:textSize="20dp"
+        />
+
+
+
+
+</LinearLayout>
