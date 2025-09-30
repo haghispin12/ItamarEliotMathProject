@@ -7,16 +7,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    Exercise exercise = new Exercise();
+    private Exercise exercise;
 
     private TextView successnum;
     private Button challenge;
@@ -26,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView secundnum;
     private TextView answer;
     private Button checkanswer;
-
-
     int result;
+
+    private ExerciseCallBack ECB;
+
+
 
 
     @Override
@@ -37,6 +33,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
         Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+
+
+        ECB = new ExerciseCallBack() {
+            @Override
+            public void correct(int num1, int num2) {
+                firstnum.setText(String.valueOf(num1));
+                secundnum.setText(String.valueOf(num2));
+                result = num1*num2;
+
+
+
+            }
+
+        };
+
+        exercise = new Exercise(ECB);
 
 
 
@@ -51,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         secundnum = findViewById(R.id.secundnum);
         answer = findViewById(R.id.answer);
         checkanswer = findViewById(R.id.checkanswer);
+
 
         challenge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             });
+
+
 
 
     }
