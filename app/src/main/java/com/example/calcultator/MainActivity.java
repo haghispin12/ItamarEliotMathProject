@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
         checkanswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(exercise.checkanswer() == true){
-                    successnum.setText(String.valueOf(Integer.parseInt(successnum.getText().toString())+1));
+                if(Integer.parseInt(answer.getText().toString()) == result){
                     Toast.makeText(MainActivity.this, "correct", Toast.LENGTH_SHORT).show();
-                }else{
+                }
+                else{
                     Toast.makeText(MainActivity.this, "wrong", Toast.LENGTH_SHORT).show();
                 }
             }
