@@ -1,6 +1,7 @@
 package com.example.calcultator;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Button checkanswer;
     int result;
 
+    int points;
+
     private ExerciseCallBack ECB;
 
 
@@ -31,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        Toast.makeText(this, "hello "+ username, Toast.LENGTH_SHORT).show();
+
 
 
         ECB = new ExerciseCallBack() {
@@ -68,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exercise.rendomten();
+                points = 20;
 
             }
         });
@@ -75,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exercise.rendom20();
+                points = 10;
+
             }
         });
 
@@ -82,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exercise.rendomquestion();
+                points = 5;
+
             }
          });
 
