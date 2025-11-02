@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallerLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Exercise exercise;
+
+    private User user;
 
     private TextView successnum;
     private Button challenge;
@@ -21,9 +24,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView secundnum;
     private TextView answer;
     private Button checkanswer;
+    private Button Rate;
     int result;
 
     int points;
+
+    int currentpoints;
 
     private ExerciseCallBack ECB;
 
@@ -36,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
         initView();
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
+        user = new User(username);
         Toast.makeText(this, "hello "+ username, Toast.LENGTH_SHORT).show();
+        user.setPoints(points);
+        user.getPoints();
 
 
 
@@ -68,6 +77,20 @@ public class MainActivity extends AppCompatActivity {
         secundnum = findViewById(R.id.secundnum);
         answer = findViewById(R.id.answer);
         checkanswer = findViewById(R.id.checkanswer);
+        Rate = findViewById(R.id.Rate);
+
+
+
+        Rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Rate_Activity.class);
+
+
+
+            }
+        });
+
 
 
         challenge.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(Integer.parseInt(answer.getText().toString()) == result){
                     Toast.makeText(MainActivity.this, "correct", Toast.LENGTH_SHORT).show();
+                    successnum.setText(String.valueOf(currentpoints + points));
+                    currentpoints = currentpoints + points;
                 }
                 else{
                     Toast.makeText(MainActivity.this, "wrong", Toast.LENGTH_SHORT).show();

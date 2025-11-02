@@ -12,22 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calcultator"
         tools:targetApi="31">
-
-        <!-- LoginActivity הוא המסך הראשון -->
+        <activity
+            android:name=".Rate_Activity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- MainActivity ייפתח רק אחרי ההתחברות -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
