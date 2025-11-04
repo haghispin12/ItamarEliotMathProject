@@ -5,7 +5,7 @@ public class User {
     private String name;
     private int points;
 
-    private int rate
+    private int rate;
 
     public User(String name) {
         this.name = name;
