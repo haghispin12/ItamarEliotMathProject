@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallerLauncher;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
     private ExerciseCallBack ECB;
 
 
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    int myrate = result.getData().getIntExtra("Rate_key",-1);
+                    Toast.makeText(MainActivity.this, "rate is " + myrate, Toast.LENGTH_SHORT).show();
+                    user.setRate(myrate);
+
+                }
+            });
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "hello "+ username, Toast.LENGTH_SHORT).show();
         user.setPoints(points);
         user.getPoints();
+
+        String Rate_key = intent.getStringExtra("Rate_key");
 
 
 
@@ -80,14 +98,11 @@ public class MainActivity extends AppCompatActivity {
         Rate = findViewById(R.id.Rate);
 
 
-
         Rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Rate_Activity.class);
-
-
-
+                activityResultLauncher.launch(intent);
 
             }
         });
@@ -138,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 
 

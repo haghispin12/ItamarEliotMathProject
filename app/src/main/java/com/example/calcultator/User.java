@@ -5,6 +5,8 @@ public class User {
     private String name;
     private int points;
 
+    private int rate
+
     public User(String name) {
         this.name = name;
 
@@ -25,6 +27,14 @@ public class User {
 
     public void addPoints(int points) {
         this.points += points;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public int getRate() {
+        return rate;
     }
 
 
