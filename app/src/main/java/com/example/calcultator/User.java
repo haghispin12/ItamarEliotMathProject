@@ -12,6 +12,10 @@ public class User {
 
     }
 
+    public String setname(String name){
+        return name;
+    }
+
 
     public String getName() {
         return name;
