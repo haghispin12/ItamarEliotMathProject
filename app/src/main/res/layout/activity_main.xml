@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayoutuser"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -154,6 +163,7 @@
         />
 
     <Button
+        android:id="@+id/showusers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SHOW ALL USERS"
@@ -164,3 +174,5 @@
 
 
 </LinearLayout>
+
+    </FrameLayout>

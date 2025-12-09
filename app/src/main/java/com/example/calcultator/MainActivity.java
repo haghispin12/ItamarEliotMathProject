@@ -1,6 +1,8 @@
 package com.example.calcultator;
 
 
+import static android.content.Intent.getIntent;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,10 +17,12 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 public class MainActivity extends AppCompatActivity {
     private Exercise exercise;
 
-    private User user;
+    private User User;
 
     private TextView successnum;
     private Button challenge;
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView secundnum;
     private TextView answer;
     private Button checkanswer;
+    private Button showusers;
     private Button Rate;
     int result;
 
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onActivityResult(ActivityResult result) {
                     int myrate = result.getData().getIntExtra("Rate_key",-1);
                     Toast.makeText(MainActivity.this, "rate is " + myrate, Toast.LENGTH_SHORT).show();
-                    user.setRate(myrate);
+                    User.setRate(myrate);
 
                 }
             });
@@ -61,22 +66,10 @@ public class MainActivity extends AppCompatActivity {
         String Rate_key = intent.getStringExtra("Rate_key");
         String username = intent.getStringExtra("username");
 
-        user = new User(username);
+        User = new User(username);
         Toast.makeText(this, "hello "+ username, Toast.LENGTH_SHORT).show();
-        user.setPoints(points);
-        user.getPoints();
-
-
-
-
-
-
-
-
-
-
-
-
+        User.setPoints(points);
+        User.getPoints();
 
 
 
@@ -88,15 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 secundnum.setText(String.valueOf(num2));
                 result = num1*num2;
 
-
-
             }
 
         };
 
         exercise = new Exercise(ECB);
-
-
 
     }
 
@@ -110,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         answer = findViewById(R.id.answer);
         checkanswer = findViewById(R.id.checkanswer);
         Rate = findViewById(R.id.Rate);
+        showusers = findViewById(R.id.showusers);
 
 
         Rate.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 exercise.rendomten();
                 points = 20;
+                User.addPoints(points);
 
             }
         });
@@ -136,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 exercise.rendom20();
                 points = 10;
+                User.addPoints(points);
 
             }
         });
@@ -145,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 exercise.rendomquestion();
                 points = 5;
+                User.addPoints(points);
 
             }
          });
@@ -162,6 +155,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             });
+
+        showusers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gson gson = new Gson();
+                String json = gson.toJson(User);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("User", json);
+                fragment_showusers fragment = new fragment_showusers();
+                fragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutuser,fragment).commit();
+            }
+        });
+
 
 
 
