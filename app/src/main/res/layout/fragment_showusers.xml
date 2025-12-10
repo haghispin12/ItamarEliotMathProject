@@ -53,10 +53,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="add image"
+            android:id="@+id/addimage"
 
             />
 
         <ImageView
+            android:id="@+id/showPic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="add user"
+            android:id="@+id/adduser"
             />
 
 
