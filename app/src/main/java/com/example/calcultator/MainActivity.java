@@ -1,10 +1,7 @@
 package com.example.calcultator;
 
 
-import static android.content.Intent.getIntent;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +13,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
     private Exercise exercise;
@@ -159,14 +154,18 @@ public class MainActivity extends AppCompatActivity {
         showusers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Gson gson = new Gson();
-                String json = gson.toJson(User);
+                Intent intent = new Intent(MainActivity.this, ShowFruitsActivity.class);
+                startActivity(intent);
 
-                Bundle bundle = new Bundle();
-                bundle.putString("User", json);
-                fragment_showusers fragment = new fragment_showusers();
-                fragment.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutuser,fragment).commit();
+
+//                Gson gson = new Gson();
+//                String json = gson.toJson(User);
+//
+//                Bundle bundle = new Bundle();
+//                bundle.putString("User", json);
+//                fragment_showusers fragment = new fragment_showusers();
+//                fragment.setArguments(bundle);
+//                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutuser,fragment).commit();
             }
         });
 
