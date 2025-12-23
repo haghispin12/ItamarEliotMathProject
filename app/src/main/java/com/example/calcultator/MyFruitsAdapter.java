@@ -14,14 +14,14 @@ import java.util.ArrayList;
 
 public class MyFruitsAdapter extends RecyclerView.Adapter<MyFruitsAdapter.MyViewHolder>{
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener1{
         void onItemClick(Fruit item);
     }
 
     private ArrayList<Fruit> fruits;
-    private OnItemClickListener listener;
+    private OnItemClickListener1 listener;
 
-    public MyFruitsAdapter(ArrayList<Fruit> fruits, OnItemClickListener listener){
+    public MyFruitsAdapter(ArrayList<Fruit> fruits, OnItemClickListener1 listener){
         this.fruits = fruits;
         this.listener = listener;
     }
@@ -55,9 +55,10 @@ public class MyFruitsAdapter extends RecyclerView.Adapter<MyFruitsAdapter.MyView
             ivFruitImg = itemView.findViewById(R.id.ivFruitImg);
         }
 
-        public void bind(final Fruit item, final OnItemClickListener listener){
+        public void bind(final Fruit item, final OnItemClickListener1 listener){
             tvFruitName.setText(item.getName());
             ivFruitImg.setImageResource(item.getDrawable());
+            listener.onItemClick(item);
 
         }
     }

@@ -70,6 +70,7 @@ public class fragment_showusers extends Fragment {
         showPic = v.findViewById(R.id.showPic);
         addimage = v.findViewById(R.id.addimage);
         adduser = v.findViewById(R.id.adduser);
+
         Gson gson = new Gson();
         String json = getArguments().getString("User");
         User user = gson.fromJson(json, User.class);
@@ -91,11 +92,6 @@ public class fragment_showusers extends Fragment {
 
             }
         });
-
-
-
-
-
 
 
 
