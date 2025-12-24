@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private ExerciseCallBack ECB;
 
 
+    /**
+     *  לוקח את הציון מהrate_activity. מעדכן את מחלקת user מה הציון שנתן המשתמש
+     */
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -67,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
         User.getPoints();
 
 
-
-
+        /**
+         * כשמגרילים שני מספרים בשביל התרגיל.זה מציג את שני המספרים,ושומר אותם בשביל לבדוק אם המשתמש צדק
+         */
         ECB = new ExerciseCallBack() {
             @Override
             public void correct(int num1, int num2) {
@@ -84,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * לוקח את כל הרכיבים כמו כפתורים וכדומה ומייצר אובייקטים שגם יהיה אפשר להאזין
+     */
     private void initView() {
         successnum = findViewById(R.id.successnum);
         challenge = findViewById(R.id.challenge);
@@ -96,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         Rate = findViewById(R.id.Rate);
         showusers = findViewById(R.id.showusers);
 
-
+        // כפתור דירוג: פותח את Rate_Activity כדי לתת ציון וחוזר עם התוצאה
         Rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        // אתגר 1–10: מגריל תרגיל קשה יותר ומוסיף 20 נקודות למשתמש
         challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        // תרגיל עד 20: מגריל תרגיל בינוני ומוסיף 10 נקודות למשתמש
         until20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        // תרגיל קל: מגריל מכפלה פשוטה ומוסיף 5 נקודות למשתמש
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
          });
-
+        // בדיקת תשובה: בודק אם המשתמש צדק, מציג הודעה ומעדכן ניקוד מצטבר
         checkanswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             });
-
+        // מעבר למסך משתמשים/פירות: פותח את ShowFruitsActivity
         showusers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

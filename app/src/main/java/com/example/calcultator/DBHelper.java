@@ -83,7 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         long id = database.insert(TABLE_RECORD, null, values);
-        user.setId(id);
+        user.setId(id + "");
         database.close();
         return id;
     }
