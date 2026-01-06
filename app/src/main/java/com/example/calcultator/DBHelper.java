@@ -12,12 +12,8 @@ import android.provider.MediaStore;
 
 import androidx.annotation.Nullable;
 
-import com.example.calcultator.User;
-
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -48,6 +44,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(@Nullable Context context) {
         super(context, DATABASENAME, null, DATABASEVERSION);
     }
+
+
 
 
     // creating the database
@@ -116,28 +114,28 @@ public class DBHelper extends SQLiteOpenHelper {
 //
 //    }
 //
-//    // return all rows in table
-//    public ArrayList<User> selectAll(){
-//        database = getReadableDatabase(); // get access to read the database
-//        ArrayList<User> users = new ArrayList<>();
-//        Cursor cursor = database.query(TABLE_RECORD, allColumns, null, null, null, null, null); // cursor points at a certain row
-//        if (cursor.getCount() > 0) {
-//            while (cursor.moveToNext()) {
-//                String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-//                int rating = cursor.getInt(cursor.getColumnIndex(COLUMN_RATE));
-//                int score = cursor.getInt(cursor.getColumnIndex(COLUMN_SCORE));
-//                byte[] bytes = cursor.getBlob(cursor.getColumnIndex(COLUMN_PICTURE));
-//
-//                Bitmap bitmap = getImage(bytes);
-//                long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
-//                User user= new User(id,name,rating,bitmap,score);
-//                users.add(user);
-//            }
-//        }
-//        cursor.close();
-//        database.close();
-//        return users;
-//    }
+    // return all rows in table
+    public ArrayList<User> selectAll(){
+        database = getReadableDatabase(); // get access to read the database
+        ArrayList<User> users = new ArrayList<>();
+        Cursor cursor = database.query(TABLE_RECORD, allColumns, null, null, null, null, null); // cursor points at a certain row
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME));
+                int rating = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_RATE));
+                int score = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_SCORE));
+                byte[] bytes = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_PICTURE));
+
+                Bitmap bitmap = getImage(bytes);
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID));
+                User user= new User(id,name,score,rating,bitmap);
+                users.add(user);
+            }
+        }
+        cursor.close();
+        database.close();
+        return users;
+    }
 //
 //    //
 //    // I prefer using this one...

@@ -1,6 +1,7 @@
 package com.example.calcultator;
 
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 public class User {
@@ -14,6 +15,14 @@ public class User {
 
     public User(String name) {
         this.name = name;
+
+    }
+
+    public User(long id, String name, int score, int rate, Bitmap picture) {
+        this.id = String.valueOf(id);
+        this.name = name;
+        this.points = score;
+        this.rate = rate;
 
     }
 

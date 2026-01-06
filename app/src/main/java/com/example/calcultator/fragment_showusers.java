@@ -25,6 +25,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 
 public class fragment_showusers extends Fragment {
 
@@ -34,7 +36,10 @@ public class fragment_showusers extends Fragment {
     private TextView score;
     private TextView rating;
     private ImageView showPic;
+    public User user;
+    DBHelper dph;
     Uri uri;
+    ArrayList<User> list;
 
 
     ActivityResultLauncher<Intent> startCamera = registerForActivityResult(
@@ -44,11 +49,17 @@ public class fragment_showusers extends Fragment {
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
                         showPic.setImageURI(uri);
+                        user.setUri(uri);
                     }
 
                 }
 
             });
+
+    // שולף מהsql את כל המשתמשים ומחזיר אותם ברשימה
+    private ArrayList<User> pullout() {
+        return dph.selectAll();
+    }
 
 
 
@@ -62,6 +73,12 @@ public class fragment_showusers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        dph = new DBHelper(requireContext());
+
+        list = pullout();
+
+
+
 
         View v = inflater.inflate(R.layout.fragment_showusers, container, false);
         usernamefr = v.findViewById(R.id.usernamefr);
@@ -73,11 +90,12 @@ public class fragment_showusers extends Fragment {
 
         Gson gson = new Gson();
         String json = getArguments().getString("User");
-        User user = gson.fromJson(json, User.class);
+        user = gson.fromJson(json, User.class);
         usernamefr.setText(user.getName());
         score.setText(String.valueOf("score:"+user.getPoints()));
         rating.setText(String.valueOf("rating:"+user.getRate()));
 
+        // open camera
         addimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +111,20 @@ public class fragment_showusers extends Fragment {
             }
         });
 
+        adduser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                long id = dph.insert(user, requireContext());
+                list = pullout();
+                int i=0;
+
+
+
+            }
+        });
+
+
+
 
 
         return v;
@@ -100,6 +132,7 @@ public class fragment_showusers extends Fragment {
 
 
     }
+
 
 
 

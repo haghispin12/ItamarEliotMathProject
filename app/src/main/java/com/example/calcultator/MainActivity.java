@@ -14,6 +14,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 public class MainActivity extends AppCompatActivity {
     private Exercise exercise;
 
@@ -164,18 +166,18 @@ public class MainActivity extends AppCompatActivity {
         showusers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ShowFruitsActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, ShowFruitsActivity.class);
+//                startActivity(intent);
 
 
-//                Gson gson = new Gson();
-//                String json = gson.toJson(User);
-//
-//                Bundle bundle = new Bundle();
-//                bundle.putString("User", json);
-//                fragment_showusers fragment = new fragment_showusers();
-//                fragment.setArguments(bundle);
-//                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutuser,fragment).commit();
+                Gson gson = new Gson();
+                String json = gson.toJson(User);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("User", json);
+                fragment_showusers fragment = new fragment_showusers();
+                fragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutuser,fragment).commit();
             }
         });
 
