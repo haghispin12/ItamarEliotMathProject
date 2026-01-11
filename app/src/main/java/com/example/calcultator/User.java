@@ -13,6 +13,8 @@ public class User {
     private Uri uri;
     private String id;
 
+    private Bitmap picture;
+
     public User(String name) {
         this.name = name;
 
@@ -23,11 +25,12 @@ public class User {
         this.name = name;
         this.points = score;
         this.rate = rate;
+        this.picture = picture;
 
     }
 
-    public String setname(String name){
-        return name;
+    public void setname(String name){
+        this.name = name;
     }
 
     public String getName() {
@@ -62,12 +65,20 @@ public class User {
         this.uri = uri;
     }
 
-    public String getId(String id){
+    public String getId(){
         return id;
     }
 
     public void setId(String id){
         this.id = id;
+    }
+
+    public void setPicture(Bitmap picture){
+        this.picture = picture;
+    }
+
+    public Bitmap getPicture(){
+        return picture;
     }
 
 

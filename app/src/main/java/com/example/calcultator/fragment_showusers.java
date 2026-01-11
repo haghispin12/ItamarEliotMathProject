@@ -40,6 +40,9 @@ public class fragment_showusers extends Fragment {
     DBHelper dph;
     Uri uri;
     ArrayList<User> list;
+    private Button update;
+    private Button delete;
+    public User current;
 
 
     ActivityResultLauncher<Intent> startCamera = registerForActivityResult(
@@ -59,6 +62,14 @@ public class fragment_showusers extends Fragment {
     // שולף מהsql את כל המשתמשים ומחזיר אותם ברשימה
     private ArrayList<User> pullout() {
         return dph.selectAll();
+    }
+
+    public void showtheuser(User updated){
+        usernamefr.setText(updated.getName());
+        score.setText("score:" + updated.getPoints());
+        rating.setText("rating:" + updated.getRate());
+        showPic.setImageBitmap(updated.getPicture());
+
     }
 
 
@@ -87,6 +98,8 @@ public class fragment_showusers extends Fragment {
         showPic = v.findViewById(R.id.showPic);
         addimage = v.findViewById(R.id.addimage);
         adduser = v.findViewById(R.id.adduser);
+        update = v.findViewById(R.id.update);
+        delete = v.findViewById(R.id.delete);
 
         Gson gson = new Gson();
         String json = getArguments().getString("User");
@@ -116,10 +129,36 @@ public class fragment_showusers extends Fragment {
             public void onClick(View v) {
                 long id = dph.insert(user, requireContext());
                 list = pullout();
+                if (list.size() >= 2) {
+                    showtheuser(list.get(1));
+                    current = list.get(1);
+                }
+
+
                 int i=0;
 
 
 
+            }
+        });
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newName = usernamefr.getText().toString().trim();
+                if (!newName.isEmpty()) {
+                    current.setname(newName);
+                    dph.update(current);
+                    showtheuser(current);
+                }
+
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dph.deleteById(Long.parseLong(current.getId()));
             }
         });
 
