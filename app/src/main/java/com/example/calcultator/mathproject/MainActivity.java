@@ -1,4 +1,4 @@
-package com.example.calcultator;
+package com.example.calcultator.mathproject;
 
 
 import android.content.Intent;
@@ -14,6 +14,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.calcultator.R;
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.calcultator;
+package com.example.calcultator.mathproject;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -7,6 +7,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.calcultator.R;
 
 import java.util.ArrayList;
 

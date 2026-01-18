@@ -1,4 +1,4 @@
-package com.example.calcultator;
+package com.example.calcultator.mathproject;
 
 public class Fruit {
     private String name;

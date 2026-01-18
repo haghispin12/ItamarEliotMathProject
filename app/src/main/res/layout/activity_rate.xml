@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Rate_Activity">
+    tools:context=".mathproject.Rate_Activity">
 
     <SeekBar
         android:id="@+id/Rating"

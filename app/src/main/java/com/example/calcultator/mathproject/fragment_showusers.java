@@ -1,4 +1,4 @@
-package com.example.calcultator;
+package com.example.calcultator.mathproject;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.calcultator.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.calcultator;
+package com.example.calcultator.mathproject;
 
 
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.calcultator.R;
 
 import java.util.ArrayList;
 

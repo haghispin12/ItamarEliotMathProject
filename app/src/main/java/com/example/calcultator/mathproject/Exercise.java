@@ -1,10 +1,4 @@
-package com.example.calcultator;
-
-import static android.widget.Toast.LENGTH_SHORT;
-
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+package com.example.calcultator.mathproject;
 
 import java.util.Random;
 

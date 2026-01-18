@@ -1,4 +1,4 @@
-package com.example.calcultator;
+package com.example.calcultator.mathproject;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -66,7 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // get the user back with the id
     // also possible to return only the id
-    public long insert(User user,Context context){
+    public long insert(User user, Context context){
         database = getWritableDatabase(); // get access to write the database
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
